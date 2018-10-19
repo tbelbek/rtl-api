@@ -10,6 +10,10 @@ namespace RtlAPI.Data
 {
     public class CustomContext : DbContext
     {
+        public CustomContext()
+            : base("DefaultConnection")
+        {
+        }
         public DbSet<TvShow> TvShow { get; set; }
         public DbSet<Schedule> Schedule { get; set; }
         public DbSet<Rating> Rating { get; set; }
