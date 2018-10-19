@@ -52,10 +52,10 @@ namespace RtlAPI.Controllers
             {
                 t.TvMazeId = t.Id;
                 return t;
-            }).OrderBy(t => t.TvMazeId);
+            }).OrderBy(t => t.TvMazeId).Take(20);
 
             //to not tire the api.
-            var ids = shows.Take(20).Select(t => t.TvMazeId).ToList();
+            var ids = shows.Select(t => t.TvMazeId).ToList();
 
             Parallel.ForEach(ids, t =>
             {
@@ -66,7 +66,8 @@ namespace RtlAPI.Controllers
                 crew = crew.Select(c => { c.ShowId = t; return c; }).ToList();
                 show.Crew = crew;
             });
-            DataService.BulkInsert(shows.ToList());
+            
+            DataService.InsertWithCheck(shows.ToList());
             return Json("Done.");
         }
 

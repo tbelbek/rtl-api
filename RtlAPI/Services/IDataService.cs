@@ -8,5 +8,6 @@ namespace RtlAPI.Services
     public interface IDataService : IBaseServices<TvShow, int>
     {
         ServiceResult<List<TvShow>> GetListPaginatedWithId(int id, int pageCount);
+        ServiceResult<bool> InsertWithCheck(List<TvShow> list);
     }
 }

@@ -40,6 +40,15 @@ namespace RtlAPI.Services
             return new ServiceResult<List<TvShow>>(shows);
         }
 
+        public ServiceResult<bool> InsertWithCheck(List<TvShow> list)
+        {
+            var idsToCheck = list.Select(p => p.TvMazeId);
+            var notInDb = serviceRepository.GetByExpression(t => idsToCheck.Contains(t.TvMazeId)).ToList();
+            var toInsert = list.Where(t => !notInDb.Select(p => p.TvMazeId).Contains(t.TvMazeId)).ToList();
+            BulkInsert(toInsert);
+            return new ServiceResult<bool>(true);
+        }
+
         public static IEnumerable<List<T>> SplitList<T>(List<T> locations, int nSize = 30)
         {
             for (int i = 0; i < locations.Count; i += nSize)
