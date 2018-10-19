@@ -46,7 +46,7 @@ namespace RtlAPI.Controllers
         }
 
         [System.Web.Http.HttpGet]
-        public void FetchData()
+        public JsonResult<string> FetchData()
         {
             var shows = RequestHelper.Get<ConcurrentBag<TvShow>>("http://api.tvmaze.com/shows").Select(t =>
             {
@@ -54,6 +54,7 @@ namespace RtlAPI.Controllers
                 return t;
             }).OrderBy(t => t.TvMazeId);
 
+            //to not tire the api.
             var ids = shows.Take(20).Select(t => t.TvMazeId).ToList();
 
             Parallel.ForEach(ids, t =>
@@ -66,13 +67,13 @@ namespace RtlAPI.Controllers
                 show.Crew = crew;
             });
             DataService.BulkInsert(shows.ToList());
+            return Json("Done.");
         }
 
         [System.Web.Http.HttpGet]
         public JsonResult<List<TvShow>> GetData(int id, int pageCount)
         {
             return Json(DataService.GetListPaginatedWithId(id, pageCount).Data);
-            //show.Data.Crew = show.Data.Crew.OrderByDescending(t => DateTime.Parse(t.Person.Birthday)).ToList();
         }
 
     }
