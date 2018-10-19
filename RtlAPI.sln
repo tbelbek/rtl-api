@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtlAPI", "RtlAPI\RtlAPI.csproj", "{EF44A115-42B7-4656-B10D-8CDF36CBF1A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF44A115-42B7-4656-B10D-8CDF36CBF1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF44A115-42B7-4656-B10D-8CDF36CBF1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF44A115-42B7-4656-B10D-8CDF36CBF1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF44A115-42B7-4656-B10D-8CDF36CBF1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24A05E67-8A36-4ACA-9557-38D134B7D4A0}
+	EndGlobalSection
+EndGlobal
